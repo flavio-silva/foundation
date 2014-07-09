@@ -1,16 +1,28 @@
 <?php
+
+$route = preg_filter('/^\//', '', $_SERVER['REQUEST_URI']);
+$route = ($route == null)?('home'):($route);
+
 //Colando o cabeçalho do documento e o menu
 require_once __DIR__ . '/../layout/header.php';
 
-//validacao e inclusao do conteudo
-if(!empty($_GET['pagina'])) {
-    if(in_array($_GET['pagina'], array('home', 'empresa', 'produtos', 'servicos', 'contato'))) {
-        require_once __DIR__ . '/../content/' . $_GET['pagina'] . '.php';
+$validRoutes = ['home', 'empresa', 'produtos', 'servicos','contato'];
+
+// Funcao para validar as rotas e verificar se o arquivo requisitado existe
+function checkRoute ($route, array $validRoutes) {
+    if(in_array($route, $validRoutes) && file_exists(__DIR__ . '/../content/' . $route . '.php')) {
+        return true;
     } else {
-        exit('Página não encontrada');
+        return false;
     }
+};
+
+if(checkRoute($route, $validRoutes) === true) {
+    require_once '/../content/' . $route . '.php';
 } else {
-    require_once __DIR__ . '/../content/home.php';
+    http_response_code(404);
+    echo 'Erro 404: Página não existente';
 }
+
 //aqui fica o rodape
 require_once __DIR__ . '/../layout/footer.php';

@@ -91,34 +91,34 @@
                 <div class="navbar-inner">
                     <div class="container">
                         <ul class="nav">
-                            <?php if(empty($_GET['pagina']) || $_GET['pagina'] == 'home'):?>
+                            <?php if(empty($route) || $route == 'home'):?>
                             <li class="active"><a href="#">Home</a></li>
                             <?php else:?>
-                            <li><a href="?pagina=home">Home</a></li>
+                            <li><a href="/home">Home</a></li>
                             <?php endif;?>
                             
-                            <?php if(isset($_GET['pagina']) && $_GET['pagina'] == 'empresa'):?>
+                            <?php if($route == 'empresa'):?>
                             <li class="active"><a href="#">Empresa</a></li>
                             <?php else:?>
-                            <li><a href="?pagina=empresa">Empresa</a></li>
+                            <li><a href="/empresa">Empresa</a></li>
                             <?php endif;?>
                             
-                            <?php if(isset($_GET['pagina']) && $_GET['pagina'] == 'produtos'):?>
+                            <?php if($route == 'produtos'):?>
                             <li class="active"><a href="#">Produtos</a></li>
                             <?php else:?>
-                            <li><a href="?pagina=produtos">Produtos</a></li>
+                            <li><a href="/produtos">Produtos</a></li>
                             <?php endif;?>
                             
-                            <?php if(isset($_GET['pagina']) && $_GET['pagina'] == 'servicos'):?>
+                            <?php if($route == 'servicos'):?>
                             <li class="active"><a href="#">Serviços</a></li>
                             <?php else:?>
-                            <li><a href="?pagina=servicos">Serviços</a></li>
+                            <li><a href="/servicos">Serviços</a></li>
                             <?php endif;?>
                             
-                            <?php if(isset($_GET['pagina']) && $_GET['pagina'] == 'contato'):?>
+                            <?php if($route == 'contato'):?>
                             <li class="active"><a href="#">Contato</a></li>
                             <?php else:?>
-                            <li><a href="?pagina=contato">Contato</a></li>
+                            <li><a href="/contato">Contato</a></li>
                             <?php endif;?>
                         </ul>
                     </div>
