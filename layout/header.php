@@ -108,17 +108,20 @@
                             <?php else:?>
                             <li><a href="/produtos">Produtos</a></li>
                             <?php endif;?>
-                            
                             <?php if($route == 'servicos'):?>
                             <li class="active"><a href="#">Serviços</a></li>
                             <?php else:?>
                             <li><a href="/servicos">Serviços</a></li>
                             <?php endif;?>
-                            
                             <?php if($route == 'contato'):?>
                             <li class="active"><a href="#">Contato</a></li>
                             <?php else:?>
                             <li><a href="/contato">Contato</a></li>
+                            <?php endif;?>
+                            <?php if($route == 'pesquisar'):?>
+                            <li class="active"><a href="#">Pesquisar</a></li>
+                            <?php else:?>
+                            <li><a href="/pesquisar">Pesquisar</a></li>
                             <?php endif;?>
                         </ul>
                     </div>
