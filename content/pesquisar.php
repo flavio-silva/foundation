@@ -6,7 +6,7 @@ $stmt->bindValue(':conteudo', $_POST['search']);
 $stmt->execute();
 ?>
 <h5 class="text-success">
-    Páginas com o conteúdo pesquisa
+    Páginas com o termo pesquisado
 </h5>
 
 <?php foreach($stmt->fetchAll(PDO::FETCH_ASSOC) as $page):
