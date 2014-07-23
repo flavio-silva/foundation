@@ -1,7 +1,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <link href="css/bootstrap.min.css" rel="stylesheet">        
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-responsive.css" rel="stylesheet">
         <style type="text/css">
       body {
         padding-top: 20px;

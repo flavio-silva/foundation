@@ -5,17 +5,26 @@ require_once __DIR__ . '/../conexao.php';
 $route = preg_filter('/^\//', '', $_SERVER['REQUEST_URI']);
 $route = ($route == null)?('home'):($route);
 
-$validRoutes = ['home', 'empresa','produtos', 'servicos', 'contato', 'pesquisar'];
+$routes = array(
+    'html' => array(
+        'contato', 'pesquisar', 'login', 'listar'
+    ),
+    'db' => array(
+        'home', 'empresa','produtos', 'servicos'
+    )
+);
 
-function getContent($db, callable $checkRoute)
+function getContent(PDO $db, $route, array $routes)
 {
-    $page = call_user_func($checkRoute);
-    if($page) {
+    if(in_array($route, $routes['db'])) {
 
         $stmt = $db->prepare('select * from paginas where nome=:page');
-        $stmt->bindValue(':page', $page);
+        $stmt->bindValue(':page', $route);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC)['conteudo'];
+
+    } elseif(in_array($route, $routes['html'])  && file_exists(__DIR__ . "/../content/{$route}.php")) {
+        require_once __DIR__ . "/../content/{$route}.php";
 
     } else {
         http_response_code(404);
@@ -27,19 +36,8 @@ function getContent($db, callable $checkRoute)
 require_once __DIR__ . '/../layout/header.php';
 
 //Conteudo
-echo getContent($db, function() use($route, $validRoutes){
-    if(in_array($route, $validRoutes)) {
-        return $route;
-    } else {
-        return false;
-    }
-});
 
-//Se a pagina tiver html, neste caso paginas contato e pesquisar
-if(in_array($route, array('contato', 'pesquisar')) && file_exists(__DIR__ . "/../content/{$route}.php")) {
-
-    require_once __DIR__ . "/../content/{$route}.php";
-}
+echo getContent($db, $route, $routes);
 
 //aqui fica o rodape
 require_once __DIR__ . '/../layout/footer.php';
