@@ -10,12 +10,14 @@ $paginas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <br />
 <table class="table">
 
+    <th>Id</th>
     <th>Página</th>
     <th>Ação</th>
 <?php foreach($paginas as $pagina):?>
     <tr>
+        <td><?= $pagina['id']?></td>
        <td><?= $pagina['nome']?></td>
-        <td><a href="?acao=editar&id=<?=$pagina['id']?>">Editar Conteúdo</a>
+        <td><a href="/?acao=editar&id=<?=$pagina['id']?>">Editar Conteúdo</a>
         &nbsp;| &nbsp;
         <a href="?acao=apagar&id=<?=$pagina['id']?>">Apagar Conteúdo</a>
         </td>
