@@ -2,8 +2,8 @@
 // conexao com banco de dados utilizando pdo
 require_once __DIR__ . '/../conexao.php';
 
-$url = preg_split('/(?=[?])/', $_SERVER['REQUEST_URI'], 2);
-$route = preg_filter('/^\//', '', $url[0]);
+$route = preg_filter('/[?].*/', '', $_SERVER['REQUEST_URI']);
+$route = preg_filter('/^\//','', $_SERVER['REQUEST_URI']);
 $route = ($route == null)?('home'):($route);
 
 
