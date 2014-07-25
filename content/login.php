@@ -17,7 +17,7 @@ if(!empty($_POST)) {
     session_start();
     if($authentication()) {
         $_SESSION['auth'] = true;
-        return header('Location:/listar');
+        return header('Location:/admin');
     }
 };
 ?>

@@ -33,7 +33,7 @@ $sql = "insert into paginas (nome, conteudo) values
 ('contato', null),
 ('pesquisar',null),
 ('login',null),
-('listar',null)";
+('admin',null)";
 $db->query($sql);
 $sql = 'insert into usuarios (usuario, senha) values (\'flv.alves\',\'$2y$10$AoodsLu7X5S4KO8wMkg/AOSO9jwIDNK3qdhFABbIiAO/tpLe5od2O\')';
 $db->query($sql);
