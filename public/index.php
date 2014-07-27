@@ -8,7 +8,7 @@ $route = ($route == null)?('home'):($route);
 
 $routes = array(
     'html' => array(
-        'contato', 'pesquisar', 'login', 'admin'
+        'contato', 'pesquisar', 'login', 'admin', 'update', 'logout'
     ),
     'db' => array(
         'home', 'empresa','produtos', 'servicos'

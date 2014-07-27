@@ -125,8 +125,12 @@
                             <?php else:?>
                             <li><a href="/pesquisar">Pesquisar</a></li>
                             <?php endif;?>
-                            <?php if($route == 'login'):?>
+                            <?php if(in_array($route, array('login','admin'))):?>
+                                <?php if($route == 'login'):?>
                                 <li class="active"><a href="#">Administração</a></li>
+                                <?php else:?>
+                                <li><a href="/logout">Logout</a></li>
+                                <?php endif;?>
                             <?php else:?>
                                 <li><a href="/login">Administração</a></li>
                             <?php endif;?>

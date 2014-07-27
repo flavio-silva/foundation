@@ -20,10 +20,7 @@
     <tr>
         <td><?= $pagina['id']?></td>
        <td><?= $pagina['nome']?></td>
-        <td><a href="/admin?acao=editar&id=<?=$pagina['id']?>">Editar Conteúdo</a>
-        &nbsp;| &nbsp;
-        <a href="/admin?acao=deletar&id=<?=$pagina['id']?>">Apagar Conteúdo</a>
-        </td>
+        <td><a href="/admin?acao=editar&id=<?=$pagina['id']?>">Editar Conteúdo</a></td>
     </tr>
     <?php endforeach;?>
 </table>
@@ -34,12 +31,21 @@
         $stmt->execute();
         $conteudo = $stmt->fetch(PDO::FETCH_ASSOC)['conteudo'];
     ?>
-    <textarea name="editor1">
-        <?=$conteudo?>
-    </textarea>
-    <script>
-        CKEDITOR.replace( 'editor1' );
-    </script>
+    <h4 class="text-center">Edição de conteúdo</h4>
+    <br/>
+    <form method="post" action="/update">
+        <input type="hidden" name="id" value="<?=$_GET['id']?>" />
+        <textarea name="conteudo">
+            <?=$conteudo?>
+        </textarea>
+        <br />
+        <input type="submit" name="salvar" value="Salvar" class="btn-primary" />
+        <input type="button" name="cancelar" value="Cancelar" onclick="javaScript: window.open('/admin','_self')"/>
+        <script>
+            CKEDITOR.replace( 'conteudo' );
+        </script>
+    </form>
+    
     <?php endif;?>
 
 <?php endif;?>

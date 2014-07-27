@@ -19,6 +19,11 @@ if(!empty($_POST)) {
         $_SESSION['auth'] = true;
         return header('Location:/admin');
     }
+} else {
+    session_start();
+    if(isset($_SESSION['auth']) && $_SESSION['auth'] == true) {
+        return header('Location:/admin');
+    }
 };
 ?>
 
